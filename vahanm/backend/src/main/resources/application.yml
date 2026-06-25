@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: vahanm-backend
+  data:
+    mongodb:
+      uri: mongodb+srv://ride_user:L1o2h3i4t5h6@vahanm.otexmiu.mongodb.net/vahanm?appName=Vahanm&tls=true&tlsInsecure=true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:vahanm_default_jwt_secret_key_padding_length_for_hmacsha256}
+    expiration-ms: 1209600000 # 14 days
+  cors:
+    allowed-origins: ${ALLOWED_ORIGINS:http://localhost:5173,http://localhost:5174}
+
+  razorpay:
+    key-id: ${RAZORPAY_KEY_ID:rzp_test_dummy_id}
+    key-secret: ${RAZORPAY_KEY_SECRET:dummy_secret}
+
+  ai:
+    provider: gemini
+    gemini-api-key: ${GEMINI_API_KEY:AIzaSyCfwbAkVOf1pcH2rXUQGpAc6hIS1bOItLA}
+    
+  openai:
+    api-key: ${OPENAI_API_KEY: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}
+  
+  tesseract:
+    data-path: ${TESSDATA_PREFIX:tessdata}
+
+logging:
+  level:
+    root: INFO
+    com.rideaggregator: DEBUG
+    org.springframework.data.mongodb: INFO
